@@ -1,0 +1,30 @@
+﻿@model NotificationsExtensions.TileContent.ITileSquareText04
+
+@{
+    var viewData = (PushNotification.WebSites.Web.ViewModel.NotificationTemplateViewModel)ViewBag.ViewData;
+}
+@using (Ajax.BeginForm(
+        "SendNotification",
+        new AjaxOptions
+        {
+            OnSuccess = string.Format("UpdateNotificationStatus(data, status, xhr, '{0}_{1}')", viewData.ApplicationId, viewData.DeviceId),
+            LoadingElementDuration = 1200,
+            LoadingElementId = string.Format("sending_{0}_{1}", viewData.ApplicationId, viewData.DeviceId),
+            HttpMethod = "POST"
+        }))
+{
+    @Html.Hidden("ChannelUrl", (string)viewData.ChannelUrl)
+    @Html.Hidden("NotificationType", (string)viewData.NotificationType)
+    @Html.Hidden("NotificationTemplateType", (string)viewData.NotificationTemplateType)
+
+    <fieldset>
+        <p>One string of regular text wrapped over a maximum of four lines.</p>
+
+        <div class="editor-label">
+            <label>Regular text</label>
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(m => m.TextBodyWrap.Text)
+        </div>
+    </fieldset>
+}

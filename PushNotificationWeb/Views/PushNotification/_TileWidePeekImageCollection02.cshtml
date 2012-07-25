@@ -1,0 +1,129 @@
+﻿@model NotificationsExtensions.TileContent.ITileWidePeekImageCollection02
+
+@{
+    var viewData = (PushNotification.WebSites.Web.ViewModel.NotificationTemplateViewModel)ViewBag.ViewData;
+    var images = new SelectList(viewData.TileImages, "FileUri", "FileName");
+}
+@using (Ajax.BeginForm(
+        "SendNotification",
+        new AjaxOptions
+        {
+            OnSuccess = string.Format("UpdateNotificationStatus(data, status, xhr, '{0}_{1}')", viewData.ApplicationId, viewData.DeviceId),
+            LoadingElementDuration = 1200,
+            LoadingElementId = string.Format("sending_{0}_{1}", viewData.ApplicationId, viewData.DeviceId),
+            HttpMethod = "POST"
+        }))
+{
+    @Html.Hidden("ChannelUrl", (string)viewData.ChannelUrl)
+    @Html.Hidden("NotificationType", (string)viewData.NotificationType)
+    @Html.Hidden("NotificationTemplateType", (string)viewData.NotificationTemplateType)
+
+    <fieldset>
+        <p>Top: One large square image with four smaller square images to its right, no text.</p>
+        <p>Bottom: One header string in larger text on the first line, four strings of regular text on the next 
+           four lines. Text does not wrap.</p>
+
+        <div class="editor-label">
+            <label>Large square image</label>
+        </div>
+        <div class="editor-field">                
+            <div class="imgPreview">
+                @Html.DropDownListFor(m => m.ImageMain.Src, images, new { onchange = "showTileImage(this, 'tile0')" })
+                <img id="tile0" src="/Content/images/emptyimage.png" alt="Background Tile Image" />
+            </div>
+        </div>
+
+        <div class="editor-label">
+            <label>Small square image (Column 1, Row 1)</label>
+        </div>
+        <div class="editor-field">
+            <div class="imgPreview">
+                @Html.DropDownListFor(m => m.ImageSmallColumn1Row1.Src, images, new { onchange = "showTileImage(this, 'smallImage1')" })
+                <img id="smallImage1" src="/Content/images/emptyimage.png" alt="Small Image (Column 1, Row 1)" />
+            </div>
+        </div>
+
+        <div class="editor-label">
+            <label>Small square image (Column 2, Row 1)</label>
+        </div>
+        <div class="editor-field">
+            <div class="imgPreview">
+                @Html.DropDownListFor(m => m.ImageSmallColumn2Row1.Src, images, new { onchange = "showTileImage(this, 'smallImage2')" })
+                <img id="smallImage2" src="/Content/images/emptyimage.png" alt="Small Image (Column 2, Row 1)" />
+            </div>
+        </div>
+
+        <div class="editor-label">
+            <label>Small square image (Column 1, Row 2)</label>
+        </div>
+        <div class="editor-field">
+            <div class="imgPreview">
+                @Html.DropDownListFor(m => m.ImageSmallColumn1Row2.Src, images, new { onchange = "showTileImage(this, 'smallImage3')" })
+                <img id="smallImage3" src="/Content/images/emptyimage.png" alt="Small Image (Column 1, Row 2)" />
+            </div>
+        </div>
+
+        <div class="editor-label">
+            <label>Small square image (Column 2, Row 2)</label>
+        </div>
+        <div class="editor-field">
+            <div class="imgPreview">
+                @Html.DropDownListFor(m => m.ImageSmallColumn2Row2.Src, images, new { onchange = "showTileImage(this, 'smallImage4')" })
+                <img id="smallImage4" src="/Content/images/emptyimage.png" alt="Small Image (Column 2, Row 2)" />
+            </div>
+        </div>
+
+        <div class="editor-label">
+            <label>Large text</label>
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(m => m.TextHeading.Text)
+        </div>
+
+
+        <div class="editor-label">
+            <label>Regular text 1</label>
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(m => m.TextBody1.Text)
+        </div>
+
+        <div class="editor-label">
+            <label>Regular text 2</label>
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(m => m.TextBody2.Text)
+        </div>
+
+        <div class="editor-label">
+            <label>Regular text 3</label>
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(m => m.TextBody3.Text)
+        </div>
+
+        <div class="editor-label">
+            <label>Regular text 4</label>
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(m => m.TextBody4.Text)
+        </div>
+
+        <div class="editor-label">
+            <label>Square Tile Image</label>
+        </div>
+        <div class="editor-field">
+            <div class="imgPreview">
+                @Html.DropDownList("AlternativeTileImage", images, new { onchange = "showTileImage(this, 'alternativeTile')" })
+                <img id="alternativeTile" src="/Content/images/emptyimage.png" alt="Alternative Tile Image" />
+            </div>
+        </div>
+        
+        <div class="editor-label">
+            <label>Square Tile text</label>
+        </div>
+        <div class="editor-field">
+            @Html.TextBox("AlternativeTileText")
+        </div>
+    </fieldset>
+}

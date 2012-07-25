@@ -1,0 +1,18 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+@{
+    ViewBag.Title = "Error";
+}
+<h2>
+    Sorry, an error occurred while processing your request.
+</h2>
+@if ((this.Model != null) && (this.Model.Exception != null))
+{
+    this.Model.Exception.ToString();
+}
+else
+{
+    <p>
+        Please review the troubleshooting section of the Windows Azure Toolkit for Windows Phone for
+        guidance in this issue.
+    </p>
+}

@@ -1,0 +1,24 @@
+﻿@using PushNotification.WebSites.Web.UserAccountWrappers
+@{
+    ViewBag.Title = "Home";
+}
+<h2>@ViewBag.Message</h2>
+<h3>
+    Welcome to the administration site for the Windows 8 Cloud Application Services!
+</h3>
+@if (MembershipHelper.IsUserLoggedIn())
+{
+    if (MembershipHelper.IsUserAdmin())
+    {
+    <p>
+        Select an option from the menu to send Notifications to Windows 8 Applications and manage Blob Storage.
+    </p>
+    }
+}
+else
+{
+    <p>
+        Click @( Html.ActionLink("Log On", "LogOn", "Account"))
+        to authenticate.
+    </p>
+}

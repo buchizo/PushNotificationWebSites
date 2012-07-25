@@ -1,0 +1,54 @@
+﻿@model IEnumerable<PushNotification.WebSites.Web.ViewModel.BlobFileInfo>
+@{
+    ViewBag.Title = "Blob Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>
+    Blob Storage</h2>
+<p>
+    You can use this page to upload images to Windows Azure Blob Storage that you wish
+    to use for your Toast and Tile notifications</p>
+<table class="left-aligned">
+    <tr>
+        <th>
+            Image
+        </th>
+        <th>
+            Detail
+        </th>
+        <th>
+        </th>
+    </tr>
+    @{
+        var i = 0;
+        foreach (var item in Model)
+        {
+        <tr class="d@(i % 2)">
+            <td>
+                <img src="@item.FileUri" alt="@item.FileName" />
+            </td>
+            <td>
+                <div class="editor-label">
+                    @Html.DisplayFor(modelItem => item.FileName)
+                </div>
+                <div class="editor-label">
+                    @Html.DisplayFor(modelItem => item.FileUri)
+                </div>
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "Delete", new { Url = item.FileUri })
+            </td>
+        </tr>      
+            i++;
+        }
+    }
+</table>
+@using (Html.BeginForm("AddBlob", "Blob", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <label for="file">
+        Filename:</label>
+    <input type="file" name="file" id="file" />
+        
+    <input type="submit" value="Upload" />
+}
+<br />

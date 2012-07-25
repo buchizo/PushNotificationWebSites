@@ -1,0 +1,58 @@
+﻿@model NotificationsExtensions.TileContent.ITileWideSmallImageAndText03
+
+@{
+    var viewData = (PushNotification.WebSites.Web.ViewModel.NotificationTemplateViewModel)ViewBag.ViewData;
+    var images = new SelectList(viewData.TileImages, "FileUri", "FileName");
+}
+@using (Ajax.BeginForm(
+        "SendNotification",
+        new AjaxOptions
+        {
+            OnSuccess = string.Format("UpdateNotificationStatus(data, status, xhr, '{0}_{1}')", viewData.ApplicationId, viewData.DeviceId),
+            LoadingElementDuration = 1200,
+            LoadingElementId = string.Format("sending_{0}_{1}", viewData.ApplicationId, viewData.DeviceId),
+            HttpMethod = "POST"
+        }))
+{
+    @Html.Hidden("ChannelUrl", (string)viewData.ChannelUrl)
+    @Html.Hidden("NotificationType", (string)viewData.NotificationType)
+    @Html.Hidden("NotificationTemplateType", (string)viewData.NotificationTemplateType)
+
+    <fieldset>
+        <p>On the left, one small image; on the right, one string of regular text wrapped over a maximum of five lines.</p>
+
+        <div class="editor-label">
+            <label>Small image</label>
+        </div>
+        <div class="editor-field">                
+            <div class="imgPreview">
+                @Html.DropDownListFor(m => m.Image.Src, images, new { onchange = "showTileImage(this, 'tile')" })
+                <img id="tile" src="/Content/images/emptyimage.png" alt="Background Tile Image" />
+            </div>
+        </div>
+
+        <div class="editor-label">
+            <label>Regular text</label>
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(m => m.TextBodyWrap.Text)
+        </div>
+
+        <div class="editor-label">
+            <label>Square Tile Image</label>
+        </div>
+        <div class="editor-field">
+            <div class="imgPreview">
+                @Html.DropDownList("AlternativeTileImage", images, new { onchange = "showTileImage(this, 'alternativeTile')" })
+                <img id="alternativeTile" src="/Content/images/emptyimage.png" alt="Alternative Tile Image" />
+            </div>
+        </div>
+        
+        <div class="editor-label">
+            <label>Square Tile text</label>
+        </div>
+        <div class="editor-field">
+            @Html.TextBox("AlternativeTileText")
+        </div>
+    </fieldset>
+}

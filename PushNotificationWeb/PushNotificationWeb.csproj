@@ -1,0 +1,442 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BE17F560-FFB0-4370-B52C-31C4133ACAA0}</ProjectGuid>
+    <ProjectTypeGuids>{e53f8fea-eae0-44a6-8774-ffd645390401};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PushNotification.WebSites</RootNamespace>
+    <AssemblyName>PushNotification.WebSites</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>
+      cd $(TargetDir)
+      del msshrtmi.dll
+    </PostBuildEvent>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AspNet.SuppressFormsRedirect">
+      <HintPath>..\packages\aspnet.suppressformsredirect.0.0.1.4\lib\40\AspNet.SuppressFormsRedirect.dll</HintPath>
+    </Reference>
+    <Reference Include="Common">
+      <HintPath>..\packages\WindowsAzure.Common.1.0.3\lib\net40\Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Configuration, Version=1.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.WindowsAzure.ConfigurationManager.1.7.0.1\lib\net35-full\Microsoft.WindowsAzure.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Diagnostics, Version=1.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="Microsoft.WindowsAzure.ServiceRuntime, Version=1.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="Microsoft.WindowsAzure.StorageClient, Version=1.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAzure.Storage.1.7.0.0\lib\net35-full\Microsoft.WindowsAzure.StorageClient.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.7\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NotificationsExtensions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WnsRecipe.0.0.3.2\lib\net40\NotificationsExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Storage.Providers, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Storage.Providers.1.0.3\lib\net40\Storage.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Services" />
+    <Reference Include="System.Data.Services.Client" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20505.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20505.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Activation" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20505.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20505.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebActivator">
+      <HintPath>..\packages\WebActivator.1.5.1\lib\net40\WebActivator.dll</HintPath>
+    </Reference>
+    <Reference Include="WnsRecipe, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WnsRecipe.0.0.3.2\lib\net40\WnsRecipe.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Documentation\Readme.htm" />
+    <None Include="Documentation\Images\dpe.jpg" />
+    <None Include="Documentation\Images\azure-logo.png" />
+    <None Include="Documentation\Images\note.gif" />
+    <None Include="Documentation\Images\Image1.png" />
+    <None Include="Documentation\Images\Image2.png" />
+    <None Include="Documentation\Images\Image3.png" />
+    <None Include="Documentation\Images\Image4.png" />
+    <None Include="Documentation\Images\Image5.png" />
+    <None Include="Documentation\Images\Image6.png" />
+    <None Include="Documentation\Images\Image8.png" />
+    <None Include="Documentation\Images\Image9.png" />
+    <None Include="Documentation\Images\Image10.png" />
+    <None Include="Documentation\Images\Image11.png" />
+    <None Include="Documentation\Images\Image12.png" />
+    <None Include="Documentation\Images\Image13.png" />
+    <None Include="Documentation\Images\Image15.png" />
+    <None Include="Documentation\Images\Image16.png" />
+    <None Include="Documentation\Images\Image17.png" />
+    <None Include="Documentation\Images\Image18.png" />
+    <None Include="Documentation\Images\Image19.png" />
+    <None Include="Documentation\Images\Image20.png" />
+    <None Include="Documentation\Images\Image21.png" />
+    <None Include="Documentation\Images\Image22.png" />
+    <None Include="Documentation\Images\Image23.png" />
+    <None Include="Documentation\Images\Image100.png" />
+    <None Include="Documentation\Images\Image101.png" />
+    <None Include="Documentation\Images\Image102.png" />
+    <None Include="Documentation\styles\docstyle.css" />
+    <None Include="Documentation\styles\master.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Readme\Content\AddingNotificationsExtensions.png" />
+    <Content Include="App_Readme\Content\EnableCustomDiagnostics.png" />
+    <Content Include="App_Readme\Content\EnableDiagnostics.png" />
+    <Content Include="App_Readme\Content\NotificationService.png" />
+    <Content Include="App_Readme\Content\SendNotification.png" />
+    <Content Include="App_Readme\Content\ServiceConfiguration.png" />
+    <Content Include="App_Readme\Content\ToastNotificationTemplate.png" />
+    <Content Include="App_Readme\Content\TraceSourceConfiguration.png" />
+    <Content Include="App_Readme\Content\TraceSourceProperty.png" />
+    <Content Include="App_Readme\Content\WATWindows8.png" />
+    <Content Include="App_Readme\Content\WnsAccessTokenProvider.png" />
+    <Content Include="App_Readme\Content\WnsAzureConfigurationSetting.png" />
+    <Content Include="App_Readme\Content\WnsRecipeAssembly.png" />
+    <Content Include="App_Readme\WindowsAzure.Notifications.Readme.htm" />
+    <Content Include="App_Readme\WnsRecipe.Readme.htm" />
+    <Content Include="packages.config" />
+    <None Include="_bin_deployableAssemblies\ja\Microsoft.Web.Infrastructure.resources.dll" />
+    <None Include="_bin_deployableAssemblies\Microsoft.Web.Infrastructure.dll" />
+    <None Include="_bin_deployableAssemblies\ja\System.Web.WebPages.Razor.resources.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.WebPages.Razor.dll" />
+    <None Include="_bin_deployableAssemblies\ja\System.Web.WebPages.resources.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.WebPages.dll" />
+    <None Include="_bin_deployableAssemblies\ja\System.Web.WebPages.Deployment.resources.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.WebPages.Deployment.dll" />
+    <None Include="_bin_deployableAssemblies\ja\System.Web.Razor.resources.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.Razor.dll" />
+    <None Include="_bin_deployableAssemblies\ja\System.Web.Helpers.resources.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.Helpers.dll" />
+    <None Include="_bin_deployableAssemblies\ja\System.Web.Mvc.resources.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.Mvc.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\NotificationService.cs" />
+    <Compile Include="CloudServices.Notifications.Common\Endpoint.cs" />
+    <Compile Include="CloudServices.Notifications.Common\IEndpointRepository.cs" />
+    <Compile Include="CloudServices.Notifications\ConfigurationExtensions.cs" />
+    <Compile Include="CloudServices.Notifications\Constants.cs" />
+    <Compile Include="CloudServices.Notifications\Controllers\EndpointController.cs" />
+    <Compile Include="CloudServices.Notifications\NotificationServiceConfig.cs" />
+    <Compile Include="CloudServices.Notifications\NotificationServiceContext.cs" />
+    <Compile Include="CloudServices.Notifications\RouteExtensions.cs" />
+    <Compile Include="CloudServices.Notifications\Security\AuthenticateEndpointAttribute.cs" />
+    <Compile Include="CloudServices.Notifications\Security\AuthorizeManagementEndpointAttribute.cs" />
+    <Compile Include="CloudServices.Notifications\Security\AuthorizeRegistrationEndpointAttribute.cs" />
+    <Compile Include="CloudServices.Notifications\Security\FuncBasedAuthorizationFilterAttribute.cs" />
+    <Compile Include="CloudServices.Notifications\WindowsAzure\DataServiceQueryExceptionExtensions.cs" />
+    <Compile Include="CloudServices.Notifications\WindowsAzure\EndpointTableRow.cs" />
+    <Compile Include="CloudServices.Notifications\WindowsAzure\WindowsAzureEndpointRepository.cs" />
+    <Compile Include="Infrastructure\NotificationTemplateModelBinder.cs" />
+    <Compile Include="Models\TileType.cs" />
+    <Compile Include="Models\ToastType.cs" />
+    <Compile Include="Repositories\IWnsEndpointRepository.cs" />
+    <Compile Include="Repositories\WnsEndpointRepository.cs" />
+    <Compile Include="Controllers\BlobController.cs" />
+    <Compile Include="Controllers\PushNotificationController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\CloudStorageInitializer.cs" />
+    <Compile Include="Helpers\ConfigReader.cs" />
+    <Compile Include="Helpers\PrivilegeConstants.cs" />
+    <Compile Include="Infrastructure\IUserPrivilegesRepository.cs" />
+    <Compile Include="Infrastructure\PrivilegesTableServiceContext.cs" />
+    <Compile Include="Models\UserPrivilege.cs" />
+    <Compile Include="ViewModel\BlobFileInfo.cs" />
+    <Compile Include="ViewModel\NotificationTemplateViewModel.cs" />
+    <EmbeddedResource Include="Resources\WindowsAzureLogo.png" />
+    <Content Include="App_Readme\Content\Site.css" />
+    <Content Include="Content\css\redmond\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\css\redmond\images\ui-bg_flat_55_fbec88_40x100.png" />
+    <Content Include="Content\css\redmond\images\ui-bg_glass_75_d0e5f5_1x400.png" />
+    <Content Include="Content\css\redmond\images\ui-bg_glass_85_dfeffc_1x400.png" />
+    <Content Include="Content\css\redmond\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\css\redmond\images\ui-bg_gloss-wave_55_5c9ccc_500x100.png" />
+    <Content Include="Content\css\redmond\images\ui-bg_inset-hard_100_f5f8f9_1x100.png" />
+    <Content Include="Content\css\redmond\images\ui-bg_inset-hard_100_fcfdfd_1x100.png" />
+    <Content Include="Content\css\redmond\images\ui-icons_217bc0_256x240.png" />
+    <Content Include="Content\css\redmond\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\css\redmond\images\ui-icons_469bdd_256x240.png" />
+    <Content Include="Content\css\redmond\images\ui-icons_6da8d5_256x240.png" />
+    <Content Include="Content\css\redmond\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\css\redmond\images\ui-icons_d8e7f3_256x240.png" />
+    <Content Include="Content\css\redmond\images\ui-icons_f9bd01_256x240.png" />
+    <Content Include="Content\css\redmond\jquery-ui-1.8.16.custom.css" />
+    <EmbeddedResource Include="Resources\WindowsAzureLogoWide.png" />
+    <Content Include="Content\images\emptyimage.png" />
+    <Content Include="Scripts\jquery-ui-1.8.16.custom.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\modernizr-2.0.6-development-only.js" />
+    <Content Include="Scripts\wns.index.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Infrastructure\ValidatePasswordLengthAttribute.cs" />
+    <Compile Include="Infrastructure\PropertiesMustMatchAttribute.cs" />
+    <Compile Include="Infrastructure\AutomaticFormatServiceHostFactory.cs" />
+    <Compile Include="Infrastructure\AutomaticFormatWebServiceHost.cs" />
+    <Compile Include="Infrastructure\CustomAuthorizeAttribute.cs" />
+    <Compile Include="Infrastructure\Extensions.cs" />
+    <Compile Include="Infrastructure\HttpConstants.cs" />
+    <Compile Include="Infrastructure\ListConstraint.cs" />
+    <Compile Include="Infrastructure\MessageSendResultLight.cs" />
+    <Compile Include="Infrastructure\RoleInWrongPortException.cs" />
+    <Compile Include="Infrastructure\NotificationSoundEvents.cs" />
+    <Compile Include="Models\Login.cs" />
+    <Compile Include="Models\LogOnModel.cs" />
+    <Compile Include="Models\RegisterModel.cs" />
+    <Compile Include="Models\RegistrationUser.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Serializers\FormatSerializerFactory.cs" />
+    <Compile Include="Serializers\IFormatSerializer.cs" />
+    <Compile Include="Serializers\IFormatSerializerFactory.cs" />
+    <Compile Include="Serializers\JsonSerializer.cs" />
+    <Compile Include="Serializers\XmlSerializer.cs" />
+    <Compile Include="UserAccountWrappers\MembershipHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Browsers\firefox.browser" />
+    <Content Include="App_Browsers\ie.browser" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\images\cloudicon_41x29.png" />
+    <Content Include="Content\images\error.png" />
+    <Content Include="Content\images\error_small.png" />
+    <Content Include="Content\images\Logon.png" />
+    <Content Include="Content\images\Register.png" />
+    <Content Include="Content\images\Send.png" />
+    <Content Include="Content\images\sending.gif" />
+    <Content Include="Content\images\success.png" />
+    <Content Include="Content\images\success_small.png" />
+    <Content Include="Content\images\plus.png" />
+    <Content Include="Content\images\minus.png" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\jquery-1.6.2.min.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Account\LogOn.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\Unauthorized.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_LogOnPartial.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Properties\PublishProfiles\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\PushNotification\_Raw.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\PushNotification\Index.cshtml" />
+    <Content Include="Views\PushNotification\_BadgeGlyph.cshtml" />
+    <Content Include="Views\PushNotification\_BadgeNumeric.cshtml" />
+    <Content Include="Views\PushNotification\_TileSquareBlock.cshtml" />
+    <Content Include="Views\PushNotification\_TileSquareImage.cshtml" />
+    <Content Include="Views\PushNotification\_TileSquarePeekImageAndText01.cshtml" />
+    <Content Include="Views\PushNotification\_TileSquarePeekImageAndText02.cshtml" />
+    <Content Include="Views\PushNotification\_TileSquarePeekImageAndText03.cshtml" />
+    <Content Include="Views\PushNotification\_TileSquarePeekImageAndText04.cshtml" />
+    <Content Include="Views\PushNotification\_TileSquareText01.cshtml" />
+    <Content Include="Views\PushNotification\_TileSquareText02.cshtml" />
+    <Content Include="Views\PushNotification\_TileSquareText03.cshtml" />
+    <Content Include="Views\PushNotification\_TileSquareText04.cshtml" />
+    <Content Include="Views\PushNotification\_TileWideBlockAndText01.cshtml" />
+    <Content Include="Views\PushNotification\_TileWideBlockAndText02.cshtml" />
+    <Content Include="Views\PushNotification\_TileWideImage.cshtml" />
+    <Content Include="Views\PushNotification\_TileWideImageAndText01.cshtml" />
+    <Content Include="Views\PushNotification\_TileWideImageAndText02.cshtml" />
+    <Content Include="Views\PushNotification\_TileWideImageCollection.cshtml" />
+    <Content Include="Views\PushNotification\_TileWidePeekImage01.cshtml" />
+    <Content Include="Views\PushNotification\_TileWidePeekImage02.cshtml" />
+    <Content Include="Views\PushNotification\_TileWidePeekImage03.cshtml" />
+    <Content Include="Views\PushNotification\_TileWidePeekImage04.cshtml" />
+    <Content Include="Views\PushNotification\_TileWidePeekImage05.cshtml" />
+    <Content Include="Views\PushNotification\_TileWidePeekImage06.cshtml" />
+    <Content Include="Views\PushNotification\_TileWidePeekImageAndText01.cshtml" />
+    <Content Include="Views\PushNotification\_TileWidePeekImageAndText02.cshtml" />
+    <Content Include="Views\PushNotification\_TileWidePeekImageCollection01.cshtml" />
+    <Content Include="Views\PushNotification\_TileWidePeekImageCollection02.cshtml" />
+    <Content Include="Views\PushNotification\_TileWidePeekImageCollection03.cshtml" />
+    <Content Include="Views\PushNotification\_TileWidePeekImageCollection04.cshtml" />
+    <Content Include="Views\PushNotification\_TileWidePeekImageCollection05.cshtml" />
+    <Content Include="Views\PushNotification\_TileWidePeekImageCollection06.cshtml" />
+    <Content Include="Views\PushNotification\_TileWideSmallImageAndText01.cshtml" />
+    <Content Include="Views\PushNotification\_TileWideSmallImageAndText02.cshtml" />
+    <Content Include="Views\PushNotification\_TileWideSmallImageAndText03.cshtml" />
+    <Content Include="Views\PushNotification\_TileWideSmallImageAndText04.cshtml" />
+    <Content Include="Views\PushNotification\_TileWideText01.cshtml" />
+    <Content Include="Views\PushNotification\_TileWideText02.cshtml" />
+    <Content Include="Views\PushNotification\_TileWideText03.cshtml" />
+    <Content Include="Views\PushNotification\_TileWideText04.cshtml" />
+    <Content Include="Views\PushNotification\_TileWideText05.cshtml" />
+    <Content Include="Views\PushNotification\_TileWideText06.cshtml" />
+    <Content Include="Views\PushNotification\_TileWideText07.cshtml" />
+    <Content Include="Views\PushNotification\_TileWideText08.cshtml" />
+    <Content Include="Views\PushNotification\_TileWideText09.cshtml" />
+    <Content Include="Views\PushNotification\_TileWideText10.cshtml" />
+    <Content Include="Views\PushNotification\_TileWideText11.cshtml" />
+    <Content Include="Views\PushNotification\_ToastImageAndText01.cshtml" />
+    <Content Include="Views\PushNotification\_ToastImageAndText02.cshtml" />
+    <Content Include="Views\PushNotification\_ToastImageAndText03.cshtml" />
+    <Content Include="Views\PushNotification\_ToastImageAndText04.cshtml" />
+    <Content Include="Views\PushNotification\_ToastText01.cshtml" />
+    <Content Include="Views\PushNotification\_ToastText02.cshtml" />
+    <Content Include="Views\PushNotification\_ToastText03.cshtml" />
+    <Content Include="Views\PushNotification\_ToastText04.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Blob\Index.cshtml" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target> -->
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(ProjectDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>8282</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:8282/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+</Project>

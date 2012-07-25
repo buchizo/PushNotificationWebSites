@@ -1,0 +1,75 @@
+﻿@model IEnumerable<PushNotification.WebSites.Web.CloudServices.Notifications.Endpoint>
+
+@using System.Web.Helpers
+@{
+    ViewBag.Title = "Push Notifications";
+    Layout = "~/Views/Shared/_Layout.cshtml";    
+}
+
+<script src="@Url.Content("~/Scripts/wns.index.js")" type="text/javascript"></script> 
+  
+<h2>Push Notifications</h2>
+<p>You can use this page to generate and send push notifications to your registered Metro Style apps</p>
+
+<table class="left-aligned">
+    <tr>
+        <th>  
+            ApplicationID          
+        </th>
+        <th>
+            UserID@ChannelID
+        </th>
+        <th>
+            Channel
+        </th>
+        <th>
+            Actions
+        </th>
+    </tr>
+    @{
+    var i = 0;
+        foreach (var item in Model)
+        {
+        var safeApplicationId = item.ApplicationId.Replace('.', '_');
+        var safeDeviceId = item.DeviceId.Replace('.', '_');
+        <tr class="d@(i%2)">
+            <td>               
+                @Html.DisplayFor(modelItem => item.ApplicationId)
+            </td>
+            <td>
+                 @string.Format("{0}@{1}", item.UserId, item.DeviceId)
+            </td>         
+            <td class="PushNotificationChannelUrl">                
+                <div><strong>Expiry:</strong> @Html.DisplayFor(modelItem => item.Expiry)</div>
+                <a class="expand-link-button" onclick="$(this).toggleClass('minus').next().toggleClass('short-url');">&nbsp;</a>
+                <div id="url_@(safeApplicationId)_@(safeDeviceId)" class="channel-url short-url">@Html.DisplayFor(modelItem => item.ChannelUri)</div>
+            </td> 
+            <td class="PushNotificationTextColumn">
+                <input type="button" value="Send Notification" id="@(safeApplicationId)?@(safeDeviceId)" class="createNotification" /><br/>
+                <img class="sending hidden" id="@string.Format("sending_{0}_{1}", safeApplicationId, safeDeviceId)" src="@Url.Content("~/Content/images/sending.gif")" alt="Sending push notification" />
+                <span id="@string.Format("result_{0}_{1}", safeApplicationId, safeDeviceId)" class="result">&nbsp;</span>     
+            </td>
+        </tr>   
+        i++; 
+    }
+    }
+</table>
+
+<div id="templateWindow" class="ui-widget" style="display: none;">
+    <p>Select the notification type and template:</p>
+    @Html.Label("notificationType", "Notification Type:")
+    @Html.DropDownList("notificationType",
+                                            new List<SelectListItem>
+                                            {
+                                                    new SelectListItem {Text="--- Select Value ---", Value ="0"},
+                                                    new SelectListItem {Text="Badge", Value ="Badge"},
+                                                    new SelectListItem {Text="Raw", Value ="Raw"},
+                                                    new SelectListItem {Text="Tile", Value ="Tile"},
+                                                    new SelectListItem {Text="Toast", Value ="Toast"}
+                                            }, new { @class = "notificationType" })
+    
+    @Html.DropDownList("notificationTemplateType", new List<SelectListItem>(), new { @class = "notificationTemplateType" })
+    @Html.Hidden("itemIdentifier")
+    @Html.Hidden("itemUrl")
+    <div id="notificationTemplate"></div>
+</div>

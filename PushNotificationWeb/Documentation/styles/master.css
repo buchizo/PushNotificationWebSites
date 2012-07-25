@@ -1,0 +1,917 @@
+﻿body
+{
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: rgb(238,238,238);
+    background-image: none;
+    background-origin: padding-box;
+    background-position-x: 0%;
+	background-position-y: 0%;
+    background-repeat: repeat;
+    background-size: auto;
+    color: #666;
+    font-family: "Segoe UI","Helvetica",Garuda,Arial,sans-serif;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+    overflow-y: scroll;
+}
+
+    body *
+    {
+        margin: 0;
+        padding: 0;
+    }
+
+p
+{
+    line-height: 1.4em;
+    margin-bottom: 17px;
+}
+
+a, a:visited
+{
+    color: #0ca2da;
+    text-decoration: none;
+}
+
+    a:hover
+    {
+        color: #0ca2da;
+        text-decoration: none;
+    }
+
+    a img
+    {
+        border: none;
+        margin-bottom: 0;
+    }
+
+.MenuLink  a{
+	color: #888;
+	font-family: "Segoe UI", "Helvetica", Garuda, Arial, sans-serif;	
+	font-size: 24px;
+	font-weight: 100;	
+	line-height: 21px;
+	margin-right: 18px;
+	margin-top: 3px;
+	text-transform: lowercase;
+	text-decoration: none;
+}
+
+.MenuLink a:hover {
+	color: #0ca2da;
+	font-family: "Segoe UI", "Helvetica", Garuda, Arial, sans-serif;	
+	font-size: 24px;
+	font-weight: 100;	
+	line-height: 21px;
+	margin-right: 18px;
+	margin-top: 3px;
+	text-transform: lowercase;
+	text-decoration: none;
+}
+
+.MenuLink-Selected a {
+	color: #0ca2da;
+	font-family: "Segoe UI", "Helvetica", Garuda, Arial, sans-serif;	
+	font-size: 24px;
+	font-weight: 100;	
+	line-height: 21px;
+	margin-right: 18px;
+	margin-top: 3px;
+	text-transform: lowercase;
+	text-decoration: none;
+}
+	
+.clearBoth
+{
+    clear: both;
+    height: 1px;
+    line-height: 0;
+    overflow: hidden;
+}
+
+blockquote:before
+{
+    background-image: url("../images/note.gif");
+    background-position: 4px;
+    background-repeat: no-repeat;
+    content: 'Note:';
+    font-weight: 700;
+    padding-left: 15px;
+    padding-right: 5px;
+}
+
+blockquote
+{
+    background: #EFEFF7;
+    border-bottom: 1px solid #D5D5D3;
+    color: #006;
+    display: block;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+    blockquote > p
+    {
+        background: #F7F7FF;
+        color: #666;
+        display: block;
+        margin-bottom: 0;
+        padding: 7px 5px;
+    }
+
+        blockquote > p:first-child
+        {
+            border-top: 1px solid #C8CDDE;
+            margin-top: 0;
+        }
+
+body h1
+{
+    clear: left;
+    color: #323232;
+    font-size: 33px;
+    font-weight: 100;
+    padding-bottom: 8px;
+}
+
+h2, h4
+{
+    margin-bottom: 8px;
+    margin-top: 25px;
+}
+
+h3
+{
+    color: #323232;
+    font-size: 21px;
+    font-weight: 100;
+    margin-bottom: 15px;
+}
+
+img
+{
+    margin-bottom: 0;
+}
+
+ul
+{
+    margin: 0 0 17px 25px;
+}
+
+ol
+{
+    margin: 0 0 17px 22px;
+}
+
+    ul li, ol li
+    {
+        margin-bottom: 13px;
+    }
+
+    ol li
+    {
+        list-style-type: decimal;
+    }
+
+        ol li ol li
+        {
+            list-style-type: lower-latin;
+        }
+
+            ol li ol li ol li
+            {
+                list-style-type: lower-roman;
+            }
+
+.mainHomepageTitle
+{
+    height: 25px;
+    color: #16A5D9;
+    padding-top: 40px;
+    background: transparent url('../images/wazlogo.png') no-repeat;
+    margin-top: 0;
+    margin-left: 0;
+    color: #fff;
+}
+
+.mainHomepageSubTitle
+{	
+	color: white;	
+	font-size: 12px;	
+	left:-15px;
+	top:-1px;
+	position:relative;
+}
+
+#whiteBkgdStrip
+{
+    background-color: transparent;
+    bottom: 0;
+    height: auto;
+    position: absolute;
+    width: 960px;
+    z-index: 0;
+}
+
+body > #outerWrapper
+{
+    height: auto;
+}
+
+#outerWrapper
+{
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+	box-shadow: 0px 0px 85px rgba(0,0,0,0.3);    
+    margin-left: auto;
+    margin-right: auto;
+    top: 0;
+    text-align:center;
+} 
+
+}
+
+html, body, html, body, #outerWrapper
+{
+    height: 100%;
+}
+
+#wrapper
+{
+	background-color: #FFF;
+    display: block;
+    margin: 0 auto;
+    padding-bottom: 0;
+	text-align: left;
+}
+
+    #wrapper:after
+    {
+        clear: both;
+        content: ".";
+        display: block;
+        height: 0;
+        visibility: hidden;
+    }
+
+#wrapper, .AspNet-Menu-Horizontal, #whiteBkgdStrip, .footer
+{
+    width: 960px;
+}
+
+.contentWrapper
+{
+    background-color: #FFF;
+    position: relative;
+    z-index: 20;
+}
+
+.header
+{
+	background-attachment: scroll;
+	background-clip: border-box;
+	background-color: rgb(60, 69, 79);
+	background-image: none;
+	background-origin: padding-box;
+	background-size:auto;    
+    height: 31px; 
+	width: 1038px;
+}
+
+.header img{
+	vertical-align:middle;
+}
+
+.footer
+{
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+    background-color: #FFF;
+    border-top-color: #ddd;
+    border-top-style: solid;
+    border-top-width: 1px;
+    clear: both;
+    font-size: 12px;
+    height: 70px;
+    margin: 0 auto;
+    position: relative;
+    width: 960px;
+    z-index: 30;
+}
+
+    .footer div
+    {
+        margin: 0 20px 0 40px;
+    }
+
+    .footer a, .footer a:visited
+    {
+        color: #1390BD;
+        text-decoration: none;
+    }
+
+    .footer .leftSideLinks
+    {
+        margin-left: 25px;
+        padding-top: 24px;
+        text-align: right;
+    }
+
+.leftSideLinks a
+{
+    color: #0ca2da;
+    font-size: 0.9em;
+    font-weight: 400;
+    text-decoration: none;
+    text-transform: none;
+}
+
+.nav-bar
+{
+    font-size: 9pt;
+    margin: 0px 0px 10px 0px;
+    list-style: none;
+    line-height: 18px;
+    display: block;
+}
+
+.nav-item
+{
+    padding-left: 10px;
+    padding-right: 10px;
+    float: left;
+}
+
+    .nav-item.first
+    {
+        padding-left: 0px;
+    }
+
+    .nav-item.last
+    {
+        padding-right: 0px;
+    }
+
+.nav-menu-header
+{
+    background-color: #fff;
+    color: #666;
+    font-size: 14px;
+    line-height: 21px;
+    font-family: "Segoe UI","Helvetica",Garuda,Arial,sans-serif;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-top: 10px;
+    padding-right: 0px;
+    width: 960px;
+}
+
+.footer .microsoftLink
+{
+    float: right;
+    margin-left: 20px;
+    padding: 24px 0 0;
+}
+
+    .footer .microsoftLink a
+    {
+        color: #666;
+        display: block;
+        height: 20px;
+        margin-bottom: 6px;
+        width: 114px;
+    }
+
+.changeLogLink
+{
+    margin-right: 5px;
+    float: right;
+	vertical-align: middle;
+	line-height:31px;
+	padding-right: 5px;
+}
+
+    .changeLogLink a
+    {
+        color: #fff;
+        font-size: 11px;
+    }
+
+        .changeLogLink a:hover
+        {
+            color: #ddd;
+        }
+
+/*arrow link of inner pages*/
+a.arrowlink
+{    
+    padding: 3px 0px 3px 12px;
+    color: rgb(131, 131, 131);
+    font-weight: normal;
+}
+
+    a.arrowlink:hover
+    {
+        color: rgb(50,50,50);
+    }
+
+/* arrow link of default page */
+.site-arrowlink1
+{
+    text-transform: uppercase;
+    background: url("../images/site-arrowlink1a.png") right top no-repeat transparent;
+    padding-right: 28px;
+    font-weight: bold;
+    font-size: 11px;
+    line-height: 20px;
+    text-decoration: none;
+    display: inline-block;
+    margin: 5px 0;
+}
+
+a.site-arrowlink1
+{
+    color: gray;
+}
+
+.site-arrowlink1:hover
+{
+    color: #4076ba;
+    background-position: right -480px;
+}
+
+.hrSmColumnNoImg
+{
+    margin-top: 15px;
+    margin-bottom: 14px;
+}
+
+.hr
+{
+    height: 1px;
+    width: 100%;
+    background-image: url('../images/100-percent-width-gradient-bar-horiz.jpg');
+	background-attachment: scroll;
+	background-repeat: no-repeat;
+	background-position-x: 0px;	
+	background-position-y: 0px;
+	background-size:auto;
+	background-origin: padding-box;
+	background-clip: border-box;
+	background-color: transparent; 
+    clear: both;
+    margin-bottom: 7px;
+    position: relative;
+}
+
+    .hr img
+    {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+.genericInnerWrapper
+{
+    background-color: #fff;
+    margin-bottom: 0;
+    padding: 18px 25px 15px;
+}
+
+.AspNet-Menu-Horizontal
+{
+    clear: both;
+    height: 39px;
+    position: relative;
+    z-index: 1000;
+}
+
+ul.AspNet-Menu
+{
+    display: block;
+    height: 40px;
+    padding: 0;
+    position: relative;
+}
+
+    ul.AspNet-Menu li
+    {
+        float: left;
+        list-style: none;
+        margin-bottom: 0;
+        position: relative;
+    }
+
+        ul.AspNet-Menu li a
+        {
+            display: block;
+            text-decoration: none;
+        }
+
+        ul.AspNet-Menu li.AspNet-Menu-Leaf > a
+        {
+            border-top: 5px solid #c9cacc;
+            color: #888;
+            font-family: "Segoe UI","Helvetica",Garuda,Arial,sans-serif;
+            font-size: 24px;
+            font-weight: 100;
+            height: 25px;
+            margin-left: 8px;
+            margin-right: 8px;
+            margin-top: -15px;
+            padding-top: 20px;
+            text-align: center;
+            text-transform: lowercase;
+        }
+
+        ul.AspNet-Menu li.AspNet-Menu-Leaf + li > a
+        {
+            border-left: none;
+        }
+
+    ul.AspNet-Menu > li.AspNet-Menu-Selected > a
+    {
+        color: #000;
+    }
+
+    ul.AspNet-Menu li.AspNet-Menu-Leaf > a.AspNet-Menu-Selected
+    {
+        border-top-color: #4076ba;
+    }
+
+.getStartedPage ol
+{
+    margin-left: 0;
+}
+
+    .getStartedPage ol li
+    {
+        margin-left: 30px;
+    }
+
+        .getStartedPage ol li ul li
+        {
+            list-style-type: disc;
+        }
+
+div.vr
+{
+    width: 1px;
+    min-height: 195px;
+    background: #bfbfbf url('../images/vr-gradient-bottom.jpg') left bottom no-repeat;
+    float: left;
+    position: relative;
+    margin-top: 20px;
+}
+
+    div.vr img
+    {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    div.vr div
+    {
+        width: 1px;
+        height: 122px;
+        background: transparent url('../images/vr-gradient-top.jpg') 0 0 no-repeat;
+    }
+
+/* specific style for agendas page */
+#agendas table
+{
+    font-size: 100%;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: left;
+    border: 1px solid #C8CDDE;
+}
+
+    #agendas table tr
+    {
+        vertical-align: top;
+    }
+
+    #agendas table th
+    {
+        color: #1390bd;
+        padding-left: 5px;
+        padding-top: 3px;
+        font-weight: bolder;
+        text-align: left;
+        font-size: 1.5em;
+        border-bottom: 1px solid #C8CDDE;
+    }
+
+    #agendas table td
+    {
+        padding: 5px;
+        margin: 1px;
+        border: 1px;
+        /*border-right: 1px solid #C8CDDE;	*/
+    }
+
+#agendas p
+{
+    padding-left: 5px;
+    line-height: 140%;
+    margin-bottom: 3px;
+}
+
+#agendas .alt
+{
+    background-color: #D3DFEE;
+}
+
+#agendas .tableSubtitle
+{
+    color: #1390bd;
+    font-size: 1.2em;
+}
+
+#agendas h2
+{
+    color: #323232;
+    font-size: 22px;
+    padding-bottom: 10px;
+    line-height: 20px;
+    letter-spacing: -0.25px;
+    font-weight: 100;
+}
+
+/*specific styles for labs and presentations */
+.anchorLinks
+{
+    list-style: none;
+    margin: 15px 0 10px 0;
+    padding: 0;
+    height: 20px;
+}
+
+    .anchorLinks li
+    {
+        float: left;
+        margin-right: 43px;
+        list-style-type: none;
+    }
+
+        .anchorLinks li.last
+        {
+            margin-right: 0;
+        }
+
+        .anchorLinks li a
+        {
+            line-height: 21px;
+            height: 100%;
+            font-size: 11px;
+            font-weight: bold;
+            text-decoration: none;
+            color: gray;
+            background: url("../images/page-home-scenarios-link-arrow.png") no-repeat right 50%;
+            text-transform: uppercase;
+            display: inline-block;
+            padding-right: 30px;
+        }
+
+            .anchorLinks li a:hover
+            {
+                color: #4076BA;
+            }
+
+/*specific styles for samples */
+.allItemsList li p
+{
+    padding-bottom: 15px;
+}
+
+.linkList
+{
+    list-style: none;
+    margin: 0;
+}
+
+    .linkList .source, .allItemsList .source
+    {
+        font-style: italic;
+    }
+
+    .linkList .date, .allItemsList .date
+    {
+        line-height: 18px;
+    }
+
+	.linkList table
+	{
+		border-style: none;    
+	}
+
+	.linkList td
+	{
+		border-style: none;
+		vertical-align: top;
+	}
+	
+.allItemsList .title
+{
+    font-weight: bold;
+}
+
+/* general column layout styles */
+.twoColWrapper_80_20, .genericInnerWrapper
+{
+}
+
+.col01, .col02, .col03, .col04
+{
+}
+
+.twoColWrapper_80_20 > .col01
+{
+    float: left;
+    padding: 18px 27px 0 0;
+    margin-bottom: 20px;
+    margin-left: 25px;
+}
+
+.twoColWrapper_80_20 > .col01
+{
+    width: 680px;
+    padding-right: 10px;
+}
+
+.twoColWrapper_80_20 > .col02
+{
+    float: right;
+    margin-bottom: 20px;
+    margin-right: 25px;
+    padding: 18px 0 0 0;
+}
+
+.twoColWrapper_80_20 > .col02
+{
+    padding-top: 29px;
+}
+
+.twoColWrapper_80_20 > .col02
+{
+    width: 230px;
+    margin-right: 5px;
+}
+
+.col02 .twoColWrapper_80_20 .col01, .col02 .twoColWrapper_80_20 .col02
+{
+    margin-left: 0;
+}
+
+.getStartedPage .getStartedList
+{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.getStartedPage ul .getStartedList, .getStartedPage ol .getStartedList
+{
+    margin-top: 12px;
+}
+
+.getStartedPage .getStartedList > li h3
+{
+    padding-left: 20px;
+    color: #323232;
+    font-size: 16px;
+    margin-bottom: 15px;
+    margin-top: 24px;
+}
+
+.getStartedPage .getStartedList > li strong
+{
+    padding-left: 20px;
+}
+
+.getStartedPage .getStartedList > li
+{
+    background: transparent url('../images/get-started-list-image.png') 0 7px no-repeat;
+    margin-bottom: 20px;
+    border-bottom: 1px solid gray;
+}
+
+    .getStartedPage .getStartedList > li.no-border
+    {
+        border-bottom: none;
+    }
+
+.getStartedPage .getStartedList ul
+{
+    list-style-type: disc;
+}
+
+    .getStartedPage .getStartedList ol ol li, .getStartedPage .getStartedList ul ol li
+    {
+        list-style-type: decimal;
+        padding-left: 4px;
+        margin-left: 22px;
+        padding-bottom: 0;
+        margin-bottom: 8px;
+    }
+
+    .getStartedPage .getStartedList ol ul, .getStartedPage .getStartedList ul ul
+    {
+        margin-left: 0;
+    }
+
+        .getStartedPage .getStartedList ol ul li, .getStartedPage .getStartedList ul ul li
+        {
+            padding-left: 10px;
+            margin-left: 16px;
+            padding-bottom: 0;
+            margin-bottom: 8px;
+        }
+
+.getStartedPage .getStartedList h3
+{
+    font-size: 11px;
+    margin-bottom: 6px;
+}
+
+    .getStartedPage .getStartedList h3 + ol
+    {
+        margin-top: 10px;
+    }
+
+.getStartedPage ol
+{
+    margin-left: 0;
+}
+
+
+    .getStartedPage ol li
+    {
+        list-style-type: none;
+        background-repeat: no-repeat;
+        background-position: 0 0;
+        padding: 1px 0 10px 27px;
+        margin-bottom: 0;
+    }
+
+        .getStartedPage ol li ul li
+        {
+            list-style-type: disc;
+        }
+
+.getStartedPage div.description
+{
+    line-height: 18px;
+}
+
+.topOfPage{
+	float:right;
+}
+
+nav {
+	margin-top: 15px;
+	background-color:#FFF;
+	margin-bottom: 5px;
+}
+
+nav ul{	
+	list-style-type: none;
+	display:inline;
+	list-style-position: outside;
+}
+
+nav li{
+display:inline;
+}
+
+/* security message */
+#securityMessage
+{
+    padding:10px;
+    background-color: #FFFFE1;
+    width: 500px;
+    border: solid 3px black;
+    position: absolute;
+    top: 20px;
+    left: 300px;
+    z-index: 10000;
+    color: #000;
+	font-size: 13.5px;	
+}
+
+#securityMessageImage
+{
+}
+
+#securityMessage .exclamation
+{
+    float:left;
+    margin: 10px;
+	margin-top: 0px;
+}

@@ -1,0 +1,102 @@
+﻿@model NotificationsExtensions.TileContent.ITileWideText08
+
+@{
+    var viewData = (PushNotification.WebSites.Web.ViewModel.NotificationTemplateViewModel)ViewBag.ViewData;
+}
+@using (Ajax.BeginForm(
+        "SendNotification",
+        new AjaxOptions
+        {
+            OnSuccess = string.Format("UpdateNotificationStatus(data, status, xhr, '{0}_{1}')", viewData.ApplicationId, viewData.DeviceId),
+            LoadingElementDuration = 1200,
+            LoadingElementId = string.Format("sending_{0}_{1}", viewData.ApplicationId, viewData.DeviceId),
+            HttpMethod = "POST"
+        }))
+{
+    @Html.Hidden("ChannelUrl", (string)viewData.ChannelUrl)
+    @Html.Hidden("NotificationType", (string)viewData.NotificationType)
+    @Html.Hidden("NotificationTemplateType", (string)viewData.NotificationTemplateType)
+
+    <fieldset>
+        <p>Ten short strings of regular text arranged in two columns of five lines each. The column widths are such 
+           that the first column acts as a label and the second column as the content. This template is similar to 
+           TileWideText11, but the first column is wider.</p>
+
+        <div class="editor-label">
+            <label>Label (Row 1)</label>
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(m => m.TextShortColumn1Row1.Text)
+        </div>
+
+        <div class="editor-label">
+            <label>Content (Row 1)</label>
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(m => m.TextColumn2Row1.Text)
+        </div>
+
+        <div class="editor-label">
+            <label>Label (Row 2)</label>
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(m => m.TextShortColumn1Row2.Text)
+        </div>
+
+        <div class="editor-label">
+            <label>Content (Row 2)</label>
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(m => m.TextColumn2Row2.Text)
+        </div>
+
+        <div class="editor-label">
+            <label>Label (Row 3)</label>
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(m => m.TextShortColumn1Row3.Text)
+        </div>
+
+        <div class="editor-label">
+            <label>Content (Row 3)</label>
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(m => m.TextColumn2Row3.Text)
+        </div>
+
+        <div class="editor-label">
+            <label>Label (Row 4)</label>
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(m => m.TextShortColumn1Row4.Text)
+        </div>
+
+        <div class="editor-label">
+            <label>Content (Row 4)</label>
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(m => m.TextColumn2Row4.Text)
+        </div>
+
+        <div class="editor-label">
+            <label>Label (Row 5)</label>
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(m => m.TextShortColumn1Row5.Text)
+        </div>
+
+        <div class="editor-label">
+            <label>Content (Row 5)</label>
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(m => m.TextColumn2Row5.Text)
+        </div>
+        
+        <div class="editor-label">
+            <label>Square Tile text</label>
+        </div>
+        <div class="editor-field">
+            @Html.TextBox("AlternativeTileText")
+        </div>
+    </fieldset>
+}

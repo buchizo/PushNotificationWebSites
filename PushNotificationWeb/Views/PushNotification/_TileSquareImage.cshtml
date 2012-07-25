@@ -1,0 +1,34 @@
+﻿@model NotificationsExtensions.TileContent.ITileSquareImage
+
+@{
+    var viewData = (PushNotification.WebSites.Web.ViewModel.NotificationTemplateViewModel)ViewBag.ViewData;
+    var images = new SelectList(viewData.TileImages, "FileUri", "FileName");
+}
+
+@using (Ajax.BeginForm(
+        "SendNotification",
+        new AjaxOptions
+        {
+            OnSuccess = string.Format("UpdateNotificationStatus(data, status, xhr, '{0}_{1}')", viewData.ApplicationId, viewData.DeviceId),
+        LoadingElementDuration = 1200, 
+            LoadingElementId = string.Format("sending_{0}_{1}", viewData.ApplicationId, viewData.DeviceId),
+            HttpMethod = "POST"
+        }))
+{
+    @Html.Hidden("ChannelUrl", (string)viewData.ChannelUrl)
+    @Html.Hidden("NotificationType", (string)viewData.NotificationType)
+    @Html.Hidden("NotificationTemplateType", (string)viewData.NotificationTemplateType)
+
+    <fieldset>
+        <p>One square image that fills the entire tile, no text.</p>
+        <div class="editor-label">
+            <label>Square Image</label>
+        </div>
+        <div class="editor-field">                
+            <div class="imgPreview">
+                @Html.DropDownListFor(m => m.Image.Src, images, new { onchange = "showTileImage(this, 'tileSquare')" })
+                <img id="tileSquare" src="/Content/images/emptyimage.png" alt="Background Tile Image" />
+            </div>
+        </div>
+    </fieldset>                          
+}

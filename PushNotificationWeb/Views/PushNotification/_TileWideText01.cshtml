@@ -1,0 +1,66 @@
+﻿@model NotificationsExtensions.TileContent.ITileWideText01
+
+@{
+    var viewData = (PushNotification.WebSites.Web.ViewModel.NotificationTemplateViewModel)ViewBag.ViewData;
+}
+@using (Ajax.BeginForm(
+        "SendNotification",
+        new AjaxOptions
+        {
+            OnSuccess = string.Format("UpdateNotificationStatus(data, status, xhr, '{0}_{1}')", viewData.ApplicationId, viewData.DeviceId),
+            LoadingElementDuration = 1200,
+            LoadingElementId = string.Format("sending_{0}_{1}", viewData.ApplicationId, viewData.DeviceId),
+            HttpMethod = "POST"
+        }))
+{
+    @Html.Hidden("ChannelUrl", (string)viewData.ChannelUrl)
+    @Html.Hidden("NotificationType", (string)viewData.NotificationType)
+    @Html.Hidden("NotificationTemplateType", (string)viewData.NotificationTemplateType)
+
+    <fieldset>
+        <p>One header string in larger text on the first line, four strings of regular text on the next four 
+           lines. Text does not wrap.</p>
+
+        <div class="editor-label">
+            <label>Large text</label>
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(m => m.TextHeading.Text)
+        </div>
+
+        <div class="editor-label">
+            <label>Regular text 1</label>
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(m => m.TextBody1.Text)
+        </div>
+
+        <div class="editor-label">
+            <label>Regular text 2</label>
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(m => m.TextBody2.Text)
+        </div>
+
+        <div class="editor-label">
+            <label>Regular text 3</label>
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(m => m.TextBody3.Text)
+        </div>
+
+        <div class="editor-label">
+            <label>Regular text 4</label>
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(m => m.TextBody4.Text)
+        </div>
+        
+        <div class="editor-label">
+            <label>Square Tile text</label>
+        </div>
+        <div class="editor-field">
+            @Html.TextBox("AlternativeTileText")
+        </div>
+    </fieldset>
+}

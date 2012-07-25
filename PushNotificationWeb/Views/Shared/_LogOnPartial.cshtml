@@ -1,0 +1,11 @@
+﻿@using PushNotification.WebSites.Web.UserAccountWrappers
+@{ var userName = MembershipHelper.UserName; }
+@if (!string.IsNullOrEmpty(userName))
+{
+    <text>Welcome <span class="user-display">@userName</span>! / @Html.ActionLink("Log Off", "LogOff", "Account")
+    </text>
+}
+else
+{
+    @: @Html.ActionLink("Log On", "LogOn", "Account") 
+}
