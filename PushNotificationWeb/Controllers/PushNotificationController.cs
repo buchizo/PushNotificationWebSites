@@ -4,7 +4,6 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Web.Mvc;
-    using Microsoft.Windows.Samples.Notifications;
     using Microsoft.WindowsAzure;
     using Microsoft.WindowsAzure.ServiceRuntime;
     using Microsoft.WindowsAzure.StorageClient;
@@ -31,7 +30,7 @@
                     null,
                     null,
                     new WnsEndpointRepository(),
-                    new WnsAccessTokenProvider(RoleEnvironment.GetConfigurationSettingValue("WNSPackageSID"), RoleEnvironment.GetConfigurationSettingValue("WNSClientSecret")))
+					new WnsAccessTokenProvider(ConfigReader.GetConfigValue("WNSPackageSID"), ConfigReader.GetConfigValue("WNSClientSecret")))
         {
         }
 
@@ -42,7 +41,7 @@
 
             CloudStorageAccount account = null;
 
-            if ((account = CloudStorageAccount.FromConfigurationSetting("DataConnectionString")) == null)
+			if ((account = CloudStorageAccount.Parse(ConfigReader.GetConfigValue("DataConnectionString"))) == null)
             {
                 if (cloudQueueClient == null)
                 {

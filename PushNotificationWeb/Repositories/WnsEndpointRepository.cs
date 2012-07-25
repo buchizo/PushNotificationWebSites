@@ -19,7 +19,7 @@
 
         public Endpoint GetEndpoint(string applicationId, string deviceId)
         {
-            return this.endpointRepository.Find(e => e.ApplicationId == applicationId && e.DeviceId == deviceId);
+            return this.endpointRepository.Find(e => e.ApplicationId == applicationId && e.ClientId== deviceId);
         }
     }
 }

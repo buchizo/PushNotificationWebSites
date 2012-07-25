@@ -1,11 +1,12 @@
 ﻿namespace PushNotification.WebSites.Web.Infrastructure
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using Microsoft.WindowsAzure;
-    using Microsoft.WindowsAzure.StorageClient;
-    using PushNotification.WebSites.Web.Models;
+	using System;
+	using System.Collections.Generic;
+	using System.Linq;
+	using Microsoft.WindowsAzure;
+	using Microsoft.WindowsAzure.StorageClient;
+	using PushNotification.WebSites.Web.Infrastructure.Helpers;
+	using PushNotification.WebSites.Web.Models;
 
     public class PrivilegesTableServiceContext : TableServiceContext, IUserPrivilegesRepository
     {
@@ -13,7 +14,7 @@
         private const string PublicUserId = "00000000-0000-0000-0000-000000000000";
 
         public PrivilegesTableServiceContext()
-            : this(CloudStorageAccount.FromConfigurationSetting("DataConnectionString"))
+			: this(CloudStorageAccount.Parse(ConfigReader.GetConfigValue("DataConnectionString")))
         {
         }
 

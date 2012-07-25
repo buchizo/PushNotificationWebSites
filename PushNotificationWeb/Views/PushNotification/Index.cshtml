@@ -31,16 +31,16 @@
         foreach (var item in Model)
         {
         var safeApplicationId = item.ApplicationId.Replace('.', '_');
-        var safeDeviceId = item.DeviceId.Replace('.', '_');
+        var safeDeviceId = item.ClientId.Replace('.', '_');
         <tr class="d@(i%2)">
             <td>               
                 @Html.DisplayFor(modelItem => item.ApplicationId)
             </td>
             <td>
-                 @string.Format("{0}@{1}", item.UserId, item.DeviceId)
+                 @string.Format("{0}@{1}", item.UserId, item.ClientId)
             </td>         
             <td class="PushNotificationChannelUrl">                
-                <div><strong>Expiry:</strong> @Html.DisplayFor(modelItem => item.Expiry)</div>
+                <div><strong>Expiry:</strong> @Html.DisplayFor(modelItem => item.ExpirationTime)</div>
                 <a class="expand-link-button" onclick="$(this).toggleClass('minus').next().toggleClass('short-url');">&nbsp;</a>
                 <div id="url_@(safeApplicationId)_@(safeDeviceId)" class="channel-url short-url">@Html.DisplayFor(modelItem => item.ChannelUri)</div>
             </td> 

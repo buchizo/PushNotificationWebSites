@@ -1,13 +1,14 @@
 ﻿namespace PushNotification.WebSites.Web.Controllers
 {
-    using System;
-    using System.Collections.Specialized;
-    using System.IO;
-    using System.Web.Mvc;
-    using Microsoft.WindowsAzure;
-    using Microsoft.WindowsAzure.StorageClient;
-    using PushNotification.WebSites.Web.Infrastructure;
-    using PushNotification.WebSites.Web.Infrastructure.Helpers;
+	using System;
+	using System.Collections.Specialized;
+	using System.IO;
+	using System.Web;
+	using System.Web.Mvc;
+	using Microsoft.WindowsAzure;
+	using Microsoft.WindowsAzure.StorageClient;
+	using PushNotification.WebSites.Web.Infrastructure;
+	using PushNotification.WebSites.Web.Infrastructure.Helpers;
 
     [CustomAuthorize(Roles = PrivilegeConstants.AdminPrivilege)]
     public class BlobController : Controller
@@ -23,7 +24,7 @@
         {
             CloudStorageAccount account = null;
 
-            if ((account = CloudStorageAccount.FromConfigurationSetting("DataConnectionString")) == null)
+			if ((account = CloudStorageAccount.Parse(ConfigReader.GetConfigValue("DataConnectionString"))) == null)
             {
                 if (this.blobClient == null)
                 {
@@ -59,7 +60,13 @@
         public ActionResult Delete(string url)
         {
             var blobContainer = this.blobClient.GetContainerReference(ConfigReader.GetConfigValue("TileImagesContainer"));
-            var blob = blobContainer.GetBlobReference(url);
+			if (blobContainer.CreateIfNotExist())
+			{
+				var permissions = new BlobContainerPermissions();
+				permissions.PublicAccess = BlobContainerPublicAccessType.Container;
+				blobContainer.SetPermissions(permissions);
+			}
+			var blob = blobContainer.GetBlobReference(url);
             blob.DeleteIfExists();
 
             return RedirectToAction("Index");
@@ -86,8 +93,16 @@
         private void SaveImage(string fileName, string contentType, Stream fileStream)
         {
             // Create a blob in container and upload image bytes to it
+			string EncordeFileName = HttpUtility.UrlEncode(fileName);
             var blobContainer = this.blobClient.GetContainerReference(ConfigReader.GetConfigValue("TileImagesContainer"));
-            var blob = blobContainer.GetBlobReference(fileName);
+			if (blobContainer.CreateIfNotExist())
+			{
+				var permissions = new BlobContainerPermissions();
+				permissions.PublicAccess = BlobContainerPublicAccessType.Container;
+				blobContainer.SetPermissions(permissions);
+			}
+
+			var blob = blobContainer.GetBlobReference(fileName);
 
             // Ensure you set the contentType for Tile notifications 
             blob.Properties.ContentType = contentType;
@@ -95,7 +110,7 @@
             // Create some metadata for this image
             var metadata = new NameValueCollection();
             metadata["DateTime"] = DateTime.UtcNow.ToString("yyyyMMddSS");
-            metadata["Filename"] = fileName;
+			metadata["Filename"] = EncordeFileName;
 
             // Add and commit metadata to blob
             blob.Metadata.Add(metadata);

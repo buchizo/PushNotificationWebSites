@@ -44,7 +44,13 @@
         public static List<BlobFileInfo> GetAllBlobsInContainer(this CloudBlobClient blobClient, string container)
         {
             var blobContainer = blobClient.GetContainerReference(container);
-            var allBlobs = blobContainer.ListBlobs(new BlobRequestOptions() { BlobListingDetails = BlobListingDetails.Metadata });
+			if (blobContainer.CreateIfNotExist())
+			{
+				var permissions = new BlobContainerPermissions();
+				permissions.PublicAccess = BlobContainerPublicAccessType.Container;
+				blobContainer.SetPermissions(permissions);
+			}
+			var allBlobs = blobContainer.ListBlobs(new BlobRequestOptions() { BlobListingDetails = BlobListingDetails.Metadata });
 
             var tileImages = new List<BlobFileInfo>();
 

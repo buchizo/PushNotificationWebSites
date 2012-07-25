@@ -4,7 +4,6 @@
     using System.Configuration;
     using System.Diagnostics.CodeAnalysis;
     using System.Globalization;
-    using Microsoft.WindowsAzure.ServiceRuntime;
 
     public static class ConfigReader
     {
@@ -12,9 +11,7 @@
             Justification = "This method gets a configuration setting value.")]
         public static string GetConfigValue(string key, bool validate = true)
         {
-            string value = RoleEnvironment.IsAvailable
-                               ? RoleEnvironment.GetConfigurationSettingValue(key)
-                               : ConfigurationManager.AppSettings[key];
+            string value = ConfigurationManager.AppSettings[key];
 
             if (validate)
             {

@@ -8,6 +8,7 @@ namespace PushNotification.WebSites.Web.App_Start
     using Microsoft.WindowsAzure;
     using PushNotification.WebSites.Web.CloudServices.Notifications;
     using PushNotification.WebSites.Web.CloudServices.Notifications.WindowsAzure;
+	using PushNotification.WebSites.Web.Infrastructure.Helpers;
 
     public static class NotificationService
     {
@@ -29,7 +30,7 @@ namespace PushNotification.WebSites.Web.App_Start
                     c.AuthorizeRegistrationRequest = AuthorizeUserRequest;
 
                     // TODO: Replace with your own Windows Azure Storage account name and key, or read it from a configuration file
-                    c.StorageProvider = new WindowsAzureEndpointRepository(CloudStorageAccount.DevelopmentStorageAccount);
+					c.StorageProvider = new WindowsAzureEndpointRepository(CloudStorageAccount.Parse(ConfigReader.GetConfigValue("DataConnectionString")));
 
                     // TODO: Specify the handlers you want for ASP.NET Web API Registration Service (authentication, logging, etc)
                     // c.DelegatingHandlers = new[] { // Your DelegatingHandler instances };

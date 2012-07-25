@@ -16,7 +16,7 @@
     public class MvcApplication : System.Web.HttpApplication
     {
         private const int DefaultHttpsPort = 443;
-        private const int DefaultHttpPort = 10080;
+        private const int DefaultHttpPort = 80;
         private const string PortErrorMessage = @"The Web role was started in a wrong port.
                                             For this sample application to work correctly, please make sure that it is running in port {0}. 
                                             Please review the Troubleshooting section of the sample documentation for instructions on how to do this.";
@@ -41,13 +41,6 @@
 
         protected void Application_Start()
         {
-            // This code sets up a handler to update CloudStorageAccount instances when their corresponding
-            // configuration settings change in the service configuration file.
-            CloudStorageAccount.SetConfigurationSettingPublisher((configName, configSetter) =>
-            {
-                // Provide the configSetter with the initial value.
-                configSetter(RoleEnvironment.GetConfigurationSettingValue(configName));
-            });
 
             AreaRegistration.RegisterAllAreas();
 
@@ -59,33 +52,18 @@
         {
             if (!securityInitialized)
             {
-                CloudStorageInitializer.InitializeCloudStorage(CloudStorageAccount.FromConfigurationSetting("DataConnectionString")); // when self signed cert installed.
+				CloudStorageInitializer.InitializeCloudStorage(
+					CloudStorageAccount.Parse(ConfigReader.GetConfigValue("DataConnectionString"))
+					);
                 InitializeSecurity();
                 securityInitialized = true;
             }
         }
 
-        protected void Application_BeginRequest(object sender, EventArgs e)
-        {
-            if (this.ShouldRedirectToHttps())
-            {
-                this.RedirectScheme(this.Context.Request.Url, "https");
-            }
-            else if (this.ShouldRedirectToHttp())
-            {
-                this.RedirectScheme(this.Context.Request.Url, "http");
-            }
-
-            if (!this.IsPortNumberOK() && !IsAllowedContent(this.Context.Request.Path))
-            {
-                this.CreateWrongPortException();
-            }
-        }
-
         private static void InitializeSecurity()
         {
-            var adminUser = Membership.FindUsersByName("admin").Cast<MembershipUser>().FirstOrDefault() ??
-                            Membership.CreateUser("admin", "Passw0rd!", "admin@contoso.com");
+			var adminUser = Membership.FindUsersByName(ConfigReader.GetConfigValue("AdministratorName")).Cast<MembershipUser>().FirstOrDefault() ??
+							Membership.CreateUser(ConfigReader.GetConfigValue("AdministratorName"), ConfigReader.GetConfigValue("AdministratorPassword"), ConfigReader.GetConfigValue("AdministratorEmail"));
 
             var adminUserId = adminUser.ProviderUserKey.ToString();
             IUserPrivilegesRepository userPrivilegesRepository = new PrivilegesTableServiceContext();
